@@ -24,7 +24,7 @@ class EventList
       },{
          day: 0,
          time: 4,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 0,
          time: 5,
@@ -36,7 +36,7 @@ class EventList
       },{
          day: 1,
          time: 1,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 1,
          time: 2,
@@ -56,7 +56,7 @@ class EventList
       },{
          day: 2,
          time: 0,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 2,
          time: 1,
@@ -88,7 +88,7 @@ class EventList
       },{
          day: 3,
          time: 2,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 3,
          time: 3,
@@ -124,31 +124,31 @@ class EventList
       },{
          day: 4,
          time: 5,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 5,
          time: 0,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 1,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 2,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 3,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 4,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 5,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 6,
          time: 0,
@@ -164,7 +164,7 @@ class EventList
       },{
          day: 6,
          time: 3,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 6,
          time: 4,
@@ -220,7 +220,7 @@ class EventList
       },{
          day: 0,
          time: 4,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 0,
          time: 5,
@@ -232,7 +232,7 @@ class EventList
       },{
          day: 1,
          time: 1,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 1,
          time: 2,
@@ -252,7 +252,7 @@ class EventList
       },{
          day: 2,
          time: 0,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 2,
          time: 1,
@@ -284,7 +284,7 @@ class EventList
       },{
          day: 3,
          time: 2,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 3,
          time: 3,
@@ -320,31 +320,31 @@ class EventList
       },{
          day: 4,
          time: 5,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 5,
          time: 0,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 1,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 2,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 3,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 4,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 5,
          time: 5,
-         event_name: "brutal"
+         event_name: "barb"
       },{
          day: 6,
          time: 0,
@@ -360,7 +360,7 @@ class EventList
       },{
          day: 6,
          time: 3,
-         event_name: "recruit"
+         event_name: "troops"
       },{
          day: 6,
          time: 4,
@@ -396,6 +396,18 @@ class EventList
       }
    ]
 
+   DISPLAY_EVENTS = {
+      tiger: "Smiledon Attack",
+      wolf:  "Wolves",
+      wish:  "Wish Tree",
+      troops: "Fast Training",
+      research: "Research",
+      build: "Building",
+      rune:  "Whispering of Runes",
+      clean: "Clean Up",
+      barb: "Barbarian War"
+   }
+
   def initialize(type)
     @event_list = []
     @day = Time.now.utc.wday - 1
@@ -412,9 +424,10 @@ class EventList
     end
 
     if current_events.size > 1
-      return "Current running events are: #{current_events.map(&:event_name).join(", ")}."
+      ev_list = current_events.map { |ev| DISPLAY_EVENTS[ev.event_name.to_sym] }.join(", ")
+      return "Current running events are: #{ev_list}."
     else
-      return "Current running event is #{current_events.first.event_name}."
+      return "Current running event is #{DISPLAY_EVENTS[current_events.first.event_name.to_sym]}."
     end
   end
 
@@ -431,7 +444,7 @@ class EventList
       event_start_time = week_start + event.day.days + (event.time*4).hours
       duration = event_start_time - Time.now.utc
 
-      "Next #{event_name} will start in #{get_formatted_date(duration)}."
+      "Next #{DISPLAY_EVENTS[event.event_name.to_sym]} will start in #{get_formatted_date(duration)}."
     else
       week_start += 7.days
       event = @event_list.select do |event|
@@ -440,7 +453,7 @@ class EventList
 
       event_start_time = week_start + event.day.days + (event.time*4).hours
       duration = event_start_time - Time.now.utc
-      "Next #{event_name} will start in #{get_formatted_date(duration)}."
+      "Next #{DISPLAY_EVENTS[event.event_name.to_sym]} will start in #{get_formatted_date(duration)}."
     end
   end
 
@@ -453,6 +466,4 @@ class EventList
 
     final_string
   end
-
-
 end
