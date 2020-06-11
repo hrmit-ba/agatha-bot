@@ -1,5 +1,3 @@
-require 'pry'
-
 class Timeline
    attr_accessor :day, :time, :event_name
 

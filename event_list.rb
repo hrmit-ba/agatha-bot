@@ -1,6 +1,5 @@
 require_relative 'timeline'
 require 'active_support/all'
-require 'pry'
 
 class EventList
   attr_accessor :event_list

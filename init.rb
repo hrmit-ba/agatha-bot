@@ -1,8 +1,8 @@
 require 'discordrb'
 require_relative 'event_list'
-require 'pry';
+require 'dotenv/load'
 
-@agatha_bot = Discordrb::Commands::CommandBot.new token: 'NzE4MTU3NDQwNjQxOTI1MTcx.Xtk_yw.S-dDI0EDyVoD-9GJ0R-cYalqqDs', client_id: 718157440641925171, prefix: '!'
+@agatha_bot = Discordrb::Commands::CommandBot.new token: ENV["TOKEN"], client_id: ENV["C_ID"], prefix: '!'
 
 @agatha_bot.command(:who_made_you?) do |event|
   event.respond 'Senpai!!!'
