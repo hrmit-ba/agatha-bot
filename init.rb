@@ -34,14 +34,14 @@ end
   event.respond "#{event_list.next_event(params[1])} Anything else I can help you with chief #{event.user.mention}?"
 end
 
-@agatha_bot.command(:help) do |event|
+@agatha_bot.command(:comlist) do |event|
   event.respond "```
     !who_made_you?
     !coffee_please
     !hello
     !current_event <new/old>
     !next <event> <new/old>
-    !help
+    !comlist
   ```"
 end
 
