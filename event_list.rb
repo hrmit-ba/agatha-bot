@@ -405,6 +405,7 @@ class EventList
       build: "Building",
       rune:  "Whispering of Runes",
       clean: "Clean Up",
+      power: "Power Up",
       barb: "Barbarian War"
    }
 
