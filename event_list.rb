@@ -503,7 +503,7 @@ class EventList
       rune: {
          name: "> Whispering of Runes",
          tips: "
-               For this event it is very important to not waste and expensive fusions. Because during **SVS Battle Preparation** there is a quest that requires you to spend mana by fusing runes.
+               For this event it is very important to not waste any expensive fusions. Because during **SVS Battle Preparation** there is a quest that requires you to spend mana by fusing runes.
 
                \r\nNever go for rank unless you are a spender and rather try and get as close to second/third rewards just by fusing low cost ones.
 
