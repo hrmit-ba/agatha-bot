@@ -120,7 +120,7 @@ end
   if params[1].to_i == 0
     event.user.pm "Hello chief, please provide a valid outpost HP as number for example: ?burn 25000"
   else
-    event.user.pm "Hello chief, you need to attack tha outpost #{(params[1].to_i/1800.0).ceil}"
+    event.user.pm "Hello chief, you need to attack that outpost #{(params[1].to_i/1800.0).ceil} times"
   end
 end
 
